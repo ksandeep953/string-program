@@ -7,52 +7,58 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <style>
+        #div1
+        {
+            border: 2px solid red;
+            background-color: cadetblue;
+            width: 450px;
+            height: 300px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" style="display: block; flex-direction: column ;">
-        <div class="row">
-    <div class= "col md-8 m-auto;"  >
     
-        <strong> Enter Any String: </strong><br>
-             <input type="text" id="a"> <br>
-
-        <strong>Result: </strong> <br>
-            <input type="text" id="b"> <br>
-
-            <br><button type="button" class="btn btn-primary" onclick="e()">Submit</button>
-           
-            <!-- <input type="submit" onclick="e()"> -->
-    </div>
-    </div>
     
-        <!-- <script>
-            const str = 'Annaa';
-            const isPalindrom = (inStr) => {
-                inStr = inStr.toLowerCase();
-                for(let i=0; i<inStr.length; i++) {
-                    if (inStr[i] !== inStr [inStr.length -1 -i]) {
-                        return false;
-                    }
-                }
-                return true;
+    <center>
+        <h1>Hii Every one</h1>
+        <h2>Display the dynamic color change</h2>
+        <hr>
+        <div id="div1">
+            <h1>Welcome to our text box message</h1>
+        </div>
+    </center>
+       
+         <!-- <script>
+            const button = document.querySelector('button');
+            const h2E1 = document.querySelector('h2');
+            const bgE1 = document.querySelector('section');
+
+            button.addEventListener('click',()=> {
+                let color = '#';
+                const random = Math.random();
+                console.log(random);
             }
-            console.log(isPalindrom(str));
+            )
+
         </script> -->
 
-         <script>
-            function e(){
-                var x= document.getElementById("a").value;
-                var y="";
-                for(i=x.length-1;i>=0;i--)
-                {
-                    y=y+x[i];
-                }
-                if(x==y)
-                document.getElementById("b").value=x+" Is a palindrom";
-                else
-                document.getElementById("b").value=x+" Is not a Palindrom";
+        <script>
+            var i=0;
+            var j=0;
+            function divchange()
+            {
+                var divtag=document.getElementById("div1");
+                var bgcolor=["purple", "yellow", "green", "red", "blue"];
+                var textcolor=["black", "red", "gray", "cyan", "pink"];
+                divtag.style.backgroundColor=bgcolor[i];
+                divtag.style.color=textcolor[j];
+                i=(i+1)%bgcolor.length;
+                j=(j+1)%textcolor.length;
             }
+            setInterval (divchange,3000);
         </script>
-    </div>
+    
 </body>
 </html>
