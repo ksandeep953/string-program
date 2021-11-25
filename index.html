@@ -4,55 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron" class="rel">
     <style>
-        div {
-    color: #1B232F;
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
+        body {
+                 background-color: #b1e9f3;
+            }
+.row {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    font-size: 25px;
+    flex-direction: column;
+    
+}
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #141815;
+  font-size: 56px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
     </style>
 </head>
 <body>
-    <div id="countdown"></div>
-<div id="countdown2"></div>
+    <div class="row" >
+        <h2>Digital Clock</h2>
     
-    <script>
-       function countdown( elementName, minutes, seconds )
-{
-    var element, endTime, hours, mins, msLeft, time;
+    <div id="clock"></div>
+</div>
 
-    function twoDigits( n )
-    {
-        return (n <= 9 ? "0" + n : n);
+    <script >
+        function currentTime() {
+    var date = new Date(); 
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; 
+      var t = setTimeout(function(){ currentTime() }, 1000); 
+  }
+  
+  function updateTime(k) {
+    if (k < 10) {
+      return "0" + k;
     }
-
-    function updateTimer()
-    {
-        msLeft = endTime - (+new Date);
-        if ( msLeft < 1000 ) {
-            element.innerHTML = "countdown's over!";
-        } else {
-            time = new Date( msLeft );
-            hours = time.getUTCHours();
-            mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
-        }
+    else {
+      return k;
     }
+  }
+  
+  currentTime(); 
 
-    element = document.getElementById( elementName );
-    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
-    updateTimer();
-}
-
-countdown( "countdown", 1, 5 );
-countdown( "countdown2", 100, 0 );
+// //   function currentTime() {
+// //   var midday = "AM";
+// //   midday = (hour >= 12) ? "PM" : "AM";
+// // }
+// function currentTime() {
+//   hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour);
+// }
     </script>
-
     
-       
 </body>
 </html>
